@@ -247,7 +247,7 @@ local function get_hspec_errors(raw_lines, test_name)
         message = error_message,
       } }
     elseif pos_found then
-      error_message = error_message and error_message .. '\n' .. trimmed or trimmed
+      error_message = error_message and error_message:gsub('%s*$', '') .. '\n' .. trimmed or trimmed
     end
     if failures_found and trimmed:match('.*' .. util.escape(test_name) .. '.*') then
       pos_found = true
